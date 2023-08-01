@@ -1,0 +1,14 @@
+{
+  "name": "my_contacts_mgnt",
+  "version": "1.0.0",
+  "description": "This My Contacts Managment App using Node Express MongoDB JWT on server Side testing ",
+  "main": "server.js ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "contacts"
+  ],
+  "author": "Abenet Asnake",
+  "license": "MIT"
+}
