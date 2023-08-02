@@ -11,10 +11,9 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 //middle ware routes
-app.use(routes);
+app.use("/api/contacts",routes);
 
 // creating the express app with the port number to listen on
 app.listen(port,() => {
     console.log(`Server is running on port ${port}`);
 });
-
