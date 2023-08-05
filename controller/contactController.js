@@ -20,13 +20,21 @@ const createContacts =  (req, res) => {
 };
 
 //@disc getContact Update a new contact
-//@routes POST /api/contacts
+//@routes PUT /api/contacts
 //@access public
 const updateContacts =  (req, res) => {
     res.status(200).json({message:`Update contact for ${req.params.id}`});
 };
 
+//@disc getContact DELETE a contact BY ID 
+//@routes DELETE /api/contacts
+//@access public
+const deleteContacts = (req, res) => {
+    res.status(200).json({message:`Delete contact for ${req.params.id}`});
+};
+
 module.exports = {getContacts,
                   getContact,
                   createContacts,
-                  updateContacts};
+                  updateContacts, 
+                  deleteContacts};
