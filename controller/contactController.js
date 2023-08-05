@@ -19,7 +19,7 @@ const createContacts =  (req, res) => {
     res.status(200).json({message:"Create contact"});
 };
 
-//@disc getContact create a new contact
+//@disc getContact Update a new contact
 //@routes POST /api/contacts
 //@access public
 const updateContacts =  (req, res) => {
