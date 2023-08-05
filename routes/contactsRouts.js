@@ -1,6 +1,10 @@
 const express = require('express');
 const routes = express.Router();
-const {getContacts,getContact,createContacts,updateContacts,deleteContacts}= require('../controller/contactController');
+const {getContacts,
+       getContact,
+       createContacts,
+       updateContacts,
+       deleteContacts}= require('../controller/contactController');
  // defining all routes for contacts 
  routes.get("/",getContacts);
 
