@@ -10,13 +10,15 @@ const errorHandler= require('./middleware/errorHandling');
 const app = express();
 // applying a middleware to access the JSON from the client 
 app.use(express.json());
-// we have to use the errorHandler 
-app.use(errorHandler);
+
 //creating a port number
 const port = process.env.PORT || 4000;
 
 //middle ware routes
 app.use("/api/contacts",routes);
+
+// we have to use the errorHandler 
+app.use(errorHandler);
 
 // creating the express app with the port number to listen on
 app.listen(port,() => {
