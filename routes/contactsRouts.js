@@ -6,15 +6,11 @@ const {getContacts,
        updateContacts,
        deleteContacts}= require('../controller/contactController');
  // defining all routes for contacts 
- routes.get("/",getContacts);
+routes.route("/").get(getContacts).post(createContacts);
 
-routes.get("/:id", getContact);
+routes.route("/:id").get(getContact).put(updateContacts).delete(deleteContacts);
 
-routes.post("/",createContacts);
 
-routes.put("/:id",updateContacts);
-
-routes.delete("/:id",deleteContacts);
 // exporting 
 module.exports=routes;
 
