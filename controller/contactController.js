@@ -1,21 +1,21 @@
 //@disc getContact get all contacts
 //@routes GET /api/contacts
 //@access public
-const getContacts=(req, res) => {
+const getContacts=async (req, res) => {
     res.status(200).json({message:"Get all contacts"});
 };
 
 //@disc getContact get single contact by id 
 //@routes GET /api/contacts
 //@access public
-const getContact = (req, res) => {
+const getContact =async (req, res) => {
     res.status(200).json({message:`Get contact for ${req.params.id}`});
     };
 
 //@disc getContact create a new contact
 //@routes POST /api/contacts
 //@access public
-const createContacts =  (req, res) => {
+const createContacts =async  (req, res) => {
     console.log("The create New Contact is=",req.body);
     //deconstruct the data from the request
     const {fullName,email,phone} = req.body;
@@ -30,14 +30,14 @@ const createContacts =  (req, res) => {
 //@disc getContact Update a new contact
 //@routes PUT /api/contacts
 //@access public
-const updateContacts =  (req, res) => {
+const updateContacts = async (req, res) => {
     res.status(200).json({message:`Update contact for ${req.params.id}`});
 };
 
 //@disc getContact DELETE a contact BY ID 
 //@routes DELETE /api/contacts
 //@access public
-const deleteContacts = (req, res) => {
+const deleteContacts =async (req, res) => {
     res.status(200).json({message:`Delete contact for ${req.params.id}`});
 };
 
