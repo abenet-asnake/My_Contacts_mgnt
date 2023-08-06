@@ -6,7 +6,8 @@ const dotenv= require('dotenv').config();
 const routes = require('./routes/contactsRouts');
 //creating the express app
 const app = express();
-
+// applying a middleware to access the JSON from the client 
+app.use(express.json());
 //creating a port number
 const port = process.env.PORT || 4000;
 
