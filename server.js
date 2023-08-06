@@ -4,10 +4,14 @@ const express = require('express');
 const dotenv= require('dotenv').config(); 
 // loading or require the routes folder 
 const routes = require('./routes/contactsRouts');
+// loading or require the middleware custom 
+const errorHandler= require('./middleware/errorHandling');
 //creating the express app
 const app = express();
 // applying a middleware to access the JSON from the client 
 app.use(express.json());
+// we have to use the errorHandler 
+app.use(errorHandler);
 //creating a port number
 const port = process.env.PORT || 4000;
 
