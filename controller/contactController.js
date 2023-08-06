@@ -17,7 +17,13 @@ const getContact = (req, res) => {
 //@access public
 const createContacts =  (req, res) => {
     console.log("The create New Contact is",req.body);
+    //deconstruct the data from the request
+    const {fullName,email,phone} = req.body;
+    if (!fullName || !email || !phone){
+        throw new Error(" all fields are required");
+    }
     res.status(200).json({message:"Create contact"});
+    
 };
 
 //@disc getContact Update a new contact
