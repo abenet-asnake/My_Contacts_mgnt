@@ -1,3 +1,5 @@
+//importing the error handler module
+const asyncHandler = require('express-async-handler')
 //@disc getContact get all contacts
 //@routes GET /api/contacts
 //@access public
