@@ -6,6 +6,9 @@ const dotenv= require('dotenv').config();
 const routes = require('./routes/contactsRouts');
 // loading or require the middleware custom 
 const errorHandler= require('./middleware/errorHandling');
+const db_connect = require('./config/DBConfig');
+// calling the database connection
+db_connect();
 //creating the express app
 const app = express();
 // applying a middleware to access the JSON from the client 
