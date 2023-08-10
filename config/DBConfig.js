@@ -5,9 +5,11 @@ const mongoose= require('mongoose');
 const db_connect= async () => { 
     try {
         //there is await db_connect to connect to
-        
+        const connect = await mongoose.connect(process.env.DB_STRING);
 
     } catch (error) {
 
     }
 };
+// exporting this conection 
+module.exports =db_connect;
