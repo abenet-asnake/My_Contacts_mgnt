@@ -8,10 +8,10 @@ const contactSchema=mongoose.Schema({
     },
     email:{
         type:String,
-        require:[true,"Please add a full name"],           
+        require:[true,"Please add an Email Address"],           
     },
     phone:{
         type:String,
-        require:[true,"Please add a full name"],
+        require:[true,"Please add a Phone Number"],
 
 },})
