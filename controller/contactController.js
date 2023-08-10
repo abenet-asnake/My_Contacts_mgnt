@@ -1,9 +1,12 @@
 //importing the error handler module
-const asyncHandler = require('express-async-handler')
+const asyncHandler = require('express-async-handler');
+// importing the model module
+const contact_model = require('../Model/contactModel');
 //@disc getContact get all contacts
 //@routes GET /api/contacts
 //@access public
 const getContacts=asyncHandler(async (req, res) => {
+    
     res.status(200).json({message:"Get all contacts"});
 });
 
