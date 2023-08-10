@@ -21,4 +21,8 @@ const contactSchema=mongoose.Schema({
 });
 
 // importing 
-module.exports =contactSchema;
+module.exports =mongoose.modal("My Contact Management:",contactSchema);
+
+
+
+  
