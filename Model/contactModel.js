@@ -14,4 +14,11 @@ const contactSchema=mongoose.Schema({
         type:String,
         require:[true,"Please add a Phone Number"],
 
-},})
+},
+},
+{
+    timestamp:true,
+});
+
+// importing 
+module.exports =contactSchema;
