@@ -1,16 +1,14 @@
 const express= require('express');
-const { registerUsers } = require('../controller/userController');
+const { registerUsers, loginUsers, userStatus } = require('../controller/userController');
 const router= express.Router();
 // creating post API routes for registration 
 router.post("/register", registerUsers);
 
 // login users
-router.post("/login", (req, res) => {
-    res.json({Message: 'User Successfully Login'});
-});
+router.post("/login", loginUsers);
 
 // status of the user 
-router.get("/status", (req, res) => {
-    res.json({Message: 'User Status'});
-});
+//router.post("/status", userStatus);
+// login users
+router.get("/status", userStatus);
 module.exports = router;
