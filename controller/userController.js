@@ -1,5 +1,6 @@
-//importing the error handler module
+//importing the error handler bcrypt package or library package
 const asyncHandler = require('express-async-handler');
+const bcrypt = require('bcrypt');
 // importing the model module
 const user_model = require('../Model/userModel');
 
@@ -20,13 +21,16 @@ const registerUsers = asyncHandler (async (req, res) => {
     }
     // the password is RAW so that we have to hash the password
     //so we have to install library hash npm install bcrypt
+    const passwordHash = await bcrypt.hash(password,13);
+    console.log("The Hash Password is: " + passwordHash);
 
-    const createUser = await user_model.create({
-        userName,
-        email,
-        password
-    })
-    res.json(createUser)});
+    // const createUser = await user_model.create({
+    //     userName,
+    //     email,
+    //     password: passwordHash
+    // })
+    // res.json(createUser);
+});
 
 //@disc loginUsers 
 //@routes POST /api/users/login 
