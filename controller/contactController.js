@@ -30,7 +30,11 @@ const createContacts =asyncHandler(async  (req, res) => {
         throw new Error(" all fields are required");
     }
     // if the all fields are required then we need to create a const that access the model of  the database
-    const create_contacts= await contact_model.create();
+    const create_contacts= await contact_model.create({
+        fullName,
+        email,
+        phone
+    });
     res.status(201).json(create_contacts);
     
 });
