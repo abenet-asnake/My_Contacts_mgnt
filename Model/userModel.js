@@ -11,7 +11,7 @@ const userSchema=mongoose.Schema({
         require:[true,"Please add an Email Address"], 
         unique:[true,"Please add a unique email"],          
     },
-    phone:{
+    password:{
         type:String,
         require:[true,"Please add a Phone Number"],
 
