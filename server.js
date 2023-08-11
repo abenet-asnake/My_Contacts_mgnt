@@ -4,6 +4,7 @@ const express = require('express');
 const dotenv= require('dotenv').config(); 
 // loading or require the routes folder 
 const routes = require('./routes/contactsRouts');
+const routesUser = require('./routes/userRouts');
 // loading or require the middleware custom 
 const errorHandler= require('./middleware/errorHandling');
 const db_connect = require('./config/DBConfig');
@@ -19,7 +20,7 @@ const port = process.env.PORT || 4000;
 
 //middle ware routes
 app.use("/api/contacts",routes);
-
+app.use("/api/users",routesUser);
 // we have to use the errorHandler 
 app.use(errorHandler);
 
