@@ -1,9 +1,8 @@
 const express= require('express');
+const { registerUsers } = require('../controller/userController');
 const router= express.Router();
 // creating post API routes for registration 
-router.post("/register", (req, res) => {
-       res.json({Message: 'User Successfully Registered'});
-});
+router.post("/register", registerUsers);
 
 // login users
 router.post("/login", (req, res) => {
