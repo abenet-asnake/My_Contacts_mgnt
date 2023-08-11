@@ -56,7 +56,7 @@ const updateContacts = asyncHandler(async (req, res) => {
          throw new Error("Contact not found");
     }
     // then update the contact
-    const update_contact = await contact_model.findByIdAndDelete(req.params.id, req.body,  {new: true});
+    const update_contact = await contact_model.findByIdAndUpdate(req.params.id, req.body,  {new: true});
     res.status(200).json(update_contact);
 });
 
