@@ -19,8 +19,8 @@ const registerUsers = asyncHandler (async (req, res) => {
         throw new Error ("Email Address already Exists");
     }
     // the password is RAW so that we have to hash the password
-    //so we have to install library hash npm install bycrypt
-     
+    //so we have to install library hash npm install bcrypt
+
     const createUser = await user_model.create({
         userName,
         email,
