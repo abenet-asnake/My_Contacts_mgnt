@@ -1,5 +1,7 @@
 //importing the error handler module
 const asyncHandler = require('express-async-handler');
+// importing the model module
+const user_model = require('../Model/userModel');
 
 //@disc registerUsers 
 //@routes POST /api/users/register
