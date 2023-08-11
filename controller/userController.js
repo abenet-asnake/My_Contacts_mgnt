@@ -24,12 +24,19 @@ const registerUsers = asyncHandler (async (req, res) => {
     const passwordHash = await bcrypt.hash(password,13);
     console.log("The Hash Password is: " + passwordHash);
 
-    // const createUser = await user_model.create({
-    //     userName,
-    //     email,
-    //     password: passwordHash
-    // })
-    // res.json(createUser);
+    const createUser = await user_model.create({
+        userName,
+        email,
+        password: passwordHash,
+    })
+    if (createUser){
+        res.status(201).json({_id: createUser.id, email: createUser.email});
+    }
+    else{
+        res.status(404);
+        throw new Error("User data is not valid");
+    }
+    res.json({Message: "User Successfully Registered"});
 });
 
 //@disc loginUsers 
