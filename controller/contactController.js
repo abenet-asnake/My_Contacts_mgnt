@@ -16,12 +16,12 @@ const getContacts=asyncHandler(async (req, res) => {
 //@access public
 const getContact =asyncHandler(async (req, res) => {
     // get contact using by id 
-    const get_contact_by_id = await contact_model.findById(req.params.id);
-    if (!get_contact_by_id) {
+    const find_contact_by_id = await contact_model.findById(req.params.id);
+    if (!find_contact_by_id) {
         res.status(404);
         throw new Error ("Contact not found ");
     }
-    res.status(200).json(get_contact_by_id);
+    res.status(200).json(find_contact_by_id);
     });
 
 //@disc getContact create a new contact
@@ -49,6 +49,13 @@ const createContacts =asyncHandler(async  (req, res) => {
 //@routes PUT /api/contacts
 //@access public
 const updateContacts = asyncHandler(async (req, res) => {
+    // first get the contact by its id 
+    const find_contact_by_id= await contact_model.findById(req.params.id);
+    if (!find_contact_by_id) {
+         res.status(404);
+         throw new Error("Contact not found");
+    }
+    
     res.status(200).json({message:`Update contact for ${req.params.id}`});
 });
 
