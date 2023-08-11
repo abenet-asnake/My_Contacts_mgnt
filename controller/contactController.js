@@ -6,8 +6,9 @@ const contact_model = require('../Model/contactModel');
 //@routes GET /api/contacts
 //@access public
 const getContacts=asyncHandler(async (req, res) => {
-    
-    res.status(200).json({message:"Get all contacts"});
+    // get all contacts from the database
+    const contacts = await contact_model.find();
+    res.status(200).json(contacts);
 });
 
 //@disc getContact get single contact by id 
@@ -28,6 +29,7 @@ const createContacts =asyncHandler(async  (req, res) => {
         res.status(400);
         throw new Error(" all fields are required");
     }
+    
     res.status(201).json({message:"Create contact"});
     
 });
