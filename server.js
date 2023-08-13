@@ -8,13 +8,13 @@ const routesUser = require('./routes/userRouts');
 // loading or require the middleware custom 
 const errorHandler= require('./middleware/errorHandling');
 const db_connect = require('./config/DBConfig');
-// calling the database connection
-db_connect();
+
 //creating the express app
 const app = express();
 // applying a middleware to access the JSON from the client 
 app.use(express.json());
-
+// calling the database connection
+db_connect();
 //creating a port number
 const port = process.env.PORT || 4000;
 

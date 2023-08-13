@@ -4,7 +4,7 @@ const mongoose= require('mongoose');
 const db_connect= async () => { 
     try {
         //there is await db_connect to connect to
-        const connections = await mongoose.connect(process.env.DB_STRING_DRIVER);
+        const connections = await mongoose.connect(process.env.DB_STRING);
         // console log to display host and database name 
         console.log("The Database is connected: ",connections.connection.name,connections.connection.host);
     } catch (error) {
