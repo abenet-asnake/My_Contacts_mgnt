@@ -14,11 +14,17 @@ const registerUsers = asyncHandler (async (req, res) => {
          res.status(404);
          throw new Error ("All Filed are required to register");
     }
-    const user_Available = await user_model.findOne({email});
-    if(user_Available) {
+    const user_Name = await user_model.findOne({userName});
+    const user_Email = await user_model.findOne({email});
+    if(user_Name) {
+        res.status(400);
+        throw new Error ("UserName is already Exists");
+    }
+    else if(user_Email) {
         res.status(400);
         throw new Error ("Email Address already Exists");
     }
+    else{
     // the password is RAW so that we have to hash the password
     //so we have to install library hash npm install bcrypt
     const passwordHash = await bcrypt.hash(password,13);
@@ -37,7 +43,7 @@ const registerUsers = asyncHandler (async (req, res) => {
         throw new Error("User data is not valid");
     }
     res.json({Message: "User Successfully Registered"});
-});
+}});
 
 //@disc loginUsers 
 //@routes POST /api/users/login 
