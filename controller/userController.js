@@ -1,6 +1,7 @@
 //importing the error handler bcrypt package or library package
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
+const jwt= require('jsonwebtoken');
 // importing the model module
 const user_model = require('../Model/userModel');
 
@@ -49,8 +50,29 @@ const registerUsers = asyncHandler (async (req, res) => {
 //@routes POST /api/users/login 
 //@access public
 const loginUsers = asyncHandler (async (req, res) => {
-    res.json({Message: 'User Successfully login'})});
+    const { email, password } = req.body;
 
+    if (!email ||!password) {
+      return res.status(400).send('Both email  and password are required');
+    }
+    //checking the user email or username
+    //const user = users.find(u => u.username === usernameOrEmail || u.email === usernameOrEmail);
+    const user = await user_model.findOne({email});
+    
+    if (!user ) {
+      return res.status(401).send('Invalid email Address');
+    }
+    
+   if(user && (await bcrypt.compare(password, user.password))){
+
+    res.json({Message: 'User Successfully login'})
+   }
+  
+    // if ((userName || email) && password) {
+    //     res.status(200).json({message: 'User login successful'});
+    // }
+    //res.json({Message: 'User Successfully login'})
+});  
 //@disc userStatus
 //@routes POST /api/users/status
 //@access public
