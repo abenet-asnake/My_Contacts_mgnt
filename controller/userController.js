@@ -74,9 +74,13 @@ const loginUsers = asyncHandler (async (req, res) => {
 
         },
     } ,
-    process.env.ACCESS_TOKE_SECRET_KEY
+    process.env.ACCESS_TOKE_SECRET_KEY,
+    {expiresIn:"3m"}
     );
     res.json({Message: accessToken});
+   } else{
+    res.status(401);
+    throw new Error("Invalid Email Address or Password");
    }
 
   
