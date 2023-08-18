@@ -77,17 +77,12 @@ const loginUsers = asyncHandler (async (req, res) => {
     process.env.ACCESS_TOKE_SECRET_KEY,
     {expiresIn:"3m"}
     );
-    res.json({Message: accessToken});
+    res.json({accessToken});
    } else{
     res.status(401);
     throw new Error("Invalid Email Address or Password");
    }
 
-  
-    // if ((userName || email) && password) {
-    //     res.status(200).json({message: 'User login successful'});
-    // }
-    res.json({Message: 'User Successfully login'});
 });  
 //@disc userStatus
 //@routes POST /api/users/status
