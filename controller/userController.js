@@ -64,14 +64,26 @@ const loginUsers = asyncHandler (async (req, res) => {
     }
     
    if(user && (await bcrypt.compare(password, user.password))){
+    // user  Authentication is need when a user wants to login it gives json  web token
+    const accessToken= jwt.sign(
+        {
+        user:{
+            userName:user.userName,
+            email:user.email,
+            user_ID:user.user_ID,
 
-    res.json({Message: 'User Successfully login'})
+        },
+    } ,
+    process.env.ACCESS_TOKE_SECRET_KEY
+    );
+    res.json({Message: accessToken});
    }
+
   
     // if ((userName || email) && password) {
     //     res.status(200).json({message: 'User login successful'});
     // }
-    //res.json({Message: 'User Successfully login'})
+    res.json({Message: 'User Successfully login'});
 });  
 //@disc userStatus
 //@routes POST /api/users/status
