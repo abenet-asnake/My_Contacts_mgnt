@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt= require('jsonwebtoken');
 // importing the model module
 const user_model = require('../Model/userModel');
-
+let accessToken;
 //@disc registerUsers 
 //@routes POST /api/users/register
 //@access public
@@ -50,27 +50,35 @@ const registerUsers = asyncHandler (async (req, res) => {
 //@routes POST /api/users/login 
 //@access public
 const loginUsers = asyncHandler (async (req, res) => {
-    const { email, password } = req.body;
+    const {usernameOrEmail,password} = req.body;
+    //const { email, password } = req.body;
 
-    if (!email ||!password) {
+    if (!usernameOrEmail ||!password) {
       return res.status(400).send('Both email  and password are required');
     }
     //checking the user email or username
-    //const user = users.find(u => u.username === usernameOrEmail || u.email === usernameOrEmail);
-    const user = await user_model.findOne({email});
-    
-    if (!user ) {
-      return res.status(401).send('Invalid email Address');
+   //const user = await user_model.find(u => u.userName === usernameOrEmail || u.email === usernameOrEmail);
+    //const user = await user_model.findOne({email});
+    let thisUser;
+    // const credentials = usernameOrEmail.split('');
+    // const at='@';
+    const isEmail = usernameOrEmail.includes('@');
+    if(isEmail ) {
+        thisUser = await user_model.findOne({email: usernameOrEmail});
+    }
+    else {
+        thisUser = await user_model.findOne({userName:usernameOrEmail});
     }
     
-   if(user && (await bcrypt.compare(password, user.password))){
+    
+   if(thisUser && (await bcrypt.compare(password, thisUser.password))){
     // user  Authentication is need when a user wants to login it gives json  web token
-    const accessToken= jwt.sign(
+     accessToken= jwt.sign(
         {
-        user:{
-            userName:user.userName,
-            email:user.email,
-            user_ID:user.user_ID,
+        thisUser:{
+            userName:thisUser.userName,
+            email:thisUser.email,
+            id:thisUser.id,
 
         },
     } ,
@@ -78,7 +86,8 @@ const loginUsers = asyncHandler (async (req, res) => {
     {expiresIn:"3m"}
     );
     res.json({accessToken});
-   } else{
+   } 
+   else{
     res.status(401);
     throw new Error("Invalid Email Address or Password");
    }
@@ -88,5 +97,13 @@ const loginUsers = asyncHandler (async (req, res) => {
 //@routes POST /api/users/status
 //@access public
 const userStatus = asyncHandler (async (req, res) => {
-    res.json({Message: 'User Status'})});
+if(!accessToken) {
+    res.status(401).json({message: "Invalid Access Token"});
+}
+if(accessToken){
+    
+}
+    //res.json({Message: 'User Status'});
+
+});
     module.exports = {registerUsers,loginUsers,userStatus};

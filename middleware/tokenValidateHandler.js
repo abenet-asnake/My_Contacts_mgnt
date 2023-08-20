@@ -3,3 +3,5 @@ const jwt= require('jsonwebtoken');
 const tokenHandler= asyncHandler(async(req, res, next)=>{
     
 });
+
+module.exports =tokenHandler;
