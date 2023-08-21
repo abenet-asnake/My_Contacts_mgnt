@@ -95,15 +95,23 @@ const loginUsers = asyncHandler (async (req, res) => {
 });  
 //@disc userStatus
 //@routes POST /api/users/status
-//@access public
+//@access private
 const userStatus = asyncHandler (async (req, res) => {
-if(!accessToken) {
-    res.status(401).json({message: "Invalid Access Token"});
-}
-if(accessToken){
-    
-}
-    //res.json({Message: 'User Status'});
+// if(!accessToken) {
+//     res.status(401).json({message: "Access token is required"});
+// }
+// if(accessToken){
+// const decodedAccessToken =jwt.verify(accessToken,process.env.ACCESS_TOKE_SECRET_KEY);
+// res.thisUser = decodedAccessToken.thisUser;
+// res.status(200).json({userName:user_model.userName});
+// }
+// else{
+//     res.status(401);
+//     throw new Error("Access token is invalid");
+// }
+//     //res.json({Message: 'User Status'});
+
+res.json(req.thisUser);
 
 });
     module.exports = {registerUsers,loginUsers,userStatus};
