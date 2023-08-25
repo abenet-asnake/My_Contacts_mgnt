@@ -27,7 +27,3 @@ const contactSchema=mongoose.Schema({
 
 // importing 
 module.exports = mongoose.model("My_Contact_Management",contactSchema);
-
-
-
-  
