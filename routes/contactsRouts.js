@@ -5,6 +5,9 @@ const {getContacts,
        createContacts,
        updateContacts,
        deleteContacts}= require('../controller/contactController');
+const tokenHandler=require('../middleware/tokenValidateHandler');
+// middleware 
+routes.use(tokenHandler);
  // defining all routes for contacts 
 routes.route("/").get(getContacts).post(createContacts);
 

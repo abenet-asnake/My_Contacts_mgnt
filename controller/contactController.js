@@ -2,18 +2,18 @@
 const asyncHandler = require('express-async-handler');
 // importing the model module
 const contact_model = require('../Model/contactModel');
-//@disc getContact get all contacts
+//@disc getContacts
 //@routes GET /api/contacts
-//@access public
+//@access private
 const getContacts=asyncHandler(async (req, res) => {
     // get all contacts from the database
     const contacts = await contact_model.find();
     res.status(200).json(contacts);
 });
 
-//@disc getContact get single contact by id 
+//@disc getContact 
 //@routes GET /api/contacts
-//@access public
+//@access private
 const getContact =asyncHandler(async (req, res) => {
     // get contact using by id 
     const find_contact_by_id = await contact_model.findById(req.params.id);
@@ -24,9 +24,9 @@ const getContact =asyncHandler(async (req, res) => {
     res.status(200).json(find_contact_by_id);
     });
 
-//@disc getContact create a new contact
+//@disc createContacts 
 //@routes POST /api/contacts
-//@access public
+//@access private
 const createContacts =asyncHandler(async  (req, res) => {
     console.log("The create New Contact is=",req.body);
     //deconstruct the data from the request
@@ -45,9 +45,9 @@ const createContacts =asyncHandler(async  (req, res) => {
     
 });
 
-//@disc getContact Update a new contact
-//@routes PUT /api/contacts
-//@access public
+//@disc getContacts 
+//@routes PUT /api/contacts:id
+//@access private
 const updateContacts = asyncHandler(async (req, res) => {
     // first get the contact by its id 
     const find_contact_by_id= await contact_model.findById(req.params.id);
@@ -60,9 +60,9 @@ const updateContacts = asyncHandler(async (req, res) => {
     res.status(200).json(update_contact);
 });
 
-//@disc getContact DELETE a contact BY ID 
-//@routes DELETE /api/contacts
-//@access public
+//@disc deleteContacts  
+//@routes DELETE /api/contacts:id
+//@access private
 const deleteContacts =asyncHandler(async (req, res) => {
     // to delete a contact from the database and fist find it by ID 
     // const find_contact_by_id= await contact_model.findById(req.params.id);
