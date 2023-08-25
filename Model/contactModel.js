@@ -2,6 +2,11 @@
 const mongoose = require('mongoose');
 // creating mongoose Schema object data type for mongoose
 const contactSchema=mongoose.Schema({
+    user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Users",
+      },
     fullName:{
         type:String,
         require:[true,"Please add a full name"],
@@ -21,7 +26,7 @@ const contactSchema=mongoose.Schema({
 });
 
 // importing 
-module.exports = mongoose.model("My Contact Management:",contactSchema);
+module.exports = mongoose.model("My_Contact_Management",contactSchema);
 
 
 
