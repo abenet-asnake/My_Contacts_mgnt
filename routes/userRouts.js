@@ -10,6 +10,6 @@ router.post("/login", loginUsers);
 
 // status of the user 
 //router.post("/status", userStatus);
-// login users
+//login users 
 router.get("/status", tokenHandler,userStatus);
 module.exports = router;
