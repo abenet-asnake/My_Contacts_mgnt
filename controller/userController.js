@@ -35,6 +35,8 @@ const registerUsers = asyncHandler (async (req, res) => {
         userName,
         email,
         password: passwordHash,
+        //user_id:request.thisUser.id,
+        
     })
     if (createUser){
         res.status(201).json({_id: createUser.id, email: createUser.email});
@@ -83,7 +85,7 @@ const loginUsers = asyncHandler (async (req, res) => {
         },
     } ,
     process.env.ACCESS_TOKE_SECRET_KEY,
-    {expiresIn:"3m"}
+    {expiresIn:"30m"}
     );
     res.json({accessToken});
    } 
